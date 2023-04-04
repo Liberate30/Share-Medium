@@ -1,0 +1,35 @@
+{% load static %}
+
+<html>
+  <head>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'css/navbar.css' %}"
+    />
+  </head>
+  <body>
+    <nav>
+      <ul>
+        <div>
+          <li class="site-title"><a href="/">Share Medium</a></li>
+        </div>
+        <div class="logn-reg-con">
+          {%if user.is_authenticated%}
+          <li class="nav-register" ><a href="/profile/{{user.username}}">Welcome {{user.username}}</a></li>
+          {% else %}
+          <li class="nav-register" ><a href="register">Register</a></li>
+          {%endif%}
+          
+          
+          {%if user.is_authenticated%}
+          <li class="logout"><a href="/logout">Logout</a></li>
+          {% else %}
+          <li class="logout"><a href="/login">Login</a></li>
+          {%endif%}
+          
+        </div>
+      </ul>
+    </nav>
+  </body>
+</html>

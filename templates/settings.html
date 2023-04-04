@@ -1,0 +1,32 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> {% block title %} Settings - {{user.username}} {% endblock %} </title>
+    <link rel="stylesheet" href="{%static 'css/settings.css'%}">
+</head>
+<body>
+    {% include 'homeNavbar.html' %}
+    <div class="settings">
+        <h1>Apply changes to your account</h1>
+
+        <form action="">
+            {% csrf_token %}
+            <p>Personal info</p>
+            <input readonly type="text" placeholder="Change username" value="{{ user.username }}">
+            <input readonly type="email" placeholder="Update email" value="{{ user.email}}">
+            <p>Change Password</p>
+            <input type="password" name="password" placeholder="Old password">
+            <input type="password" name="newPassword1" placeholder="New password">
+            <input type="password" name="newPassword2" placeholder="Retype new password">
+            <input type="submit" value="Apply Changes">
+        </form>
+    </div>
+</body>
+</html>
+{%endblock%}

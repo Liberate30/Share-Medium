@@ -1,0 +1,31 @@
+{% extends 'base.html' %} {% load static %} {% block content%}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'css/about.css' %}" />
+  </head>
+  <body>
+    {% include 'homeNavbar.html' %}
+    <div class="about">
+      <div>
+        <div class="about-desc-con">
+            <strong class="about-title about-desc-ttl">About Us</strong>
+            <p class="about-desc">
+                Share Medium is an online platform where people share or receive top
+                paid informations.
+              </p>
+        </div>
+
+        <div class="update-con">
+            <strong class="update-title">Update</strong>
+            <p class="update-desc">Sometimes these informations are called updates because your are likely hearing them for the first time.</p>
+        </div>
+
+      </div>
+    </div>
+  </body>
+</html>
+{% endblock%}

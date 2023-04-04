@@ -1,0 +1,70 @@
+form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 90%;
+  margin: 100px auto 0;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  padding: 20px;
+  gap: 20px;
+  background-color: rgb(166, 240, 240);
+}
+
+form input {
+  padding: 10px;
+  border: none;
+  border-radius: 4px;
+}
+
+input[type="submit"] {
+  width: fit-content;
+  height: fit-content;
+  padding: 10px 30px;
+  margin: auto;
+  background-color: blueviolet;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.32s;
+}
+
+input[type="submit"]:hover {
+  background-color: rgba(137, 43, 226, 0.482);
+}
+
+.login {
+  font-size: 14px;
+  color: blue;
+  cursor: pointer;
+  background-color: black;
+  width: fit-content;
+  margin: 10px auto 0;
+  padding: 6px 15px;
+  border-radius: 4px;
+  transition: all 0.4s;
+  font-weight: bold;
+}
+
+.login:hover {
+  background-color: white;
+  color: black;
+}
+
+.login > a {
+  transition: inherit;
+}
+
+.login a {
+  color: white;
+  text-underline-position: under;
+}
+.login:hover a {
+  color: blue;
+}
+
+@media screen and (min-width: 400px) {
+  form {
+    max-width: 400px;
+  }
+}

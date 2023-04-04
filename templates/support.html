@@ -1,0 +1,25 @@
+{% extends 'base.html' %} {% load static %} {% block content%}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'css/support.css' %}" />
+  </head>
+  <body>
+    {% include 'homeNavbar.html' %}
+    <div class="support">
+      <form action="" method="POST">
+        {% csrf_token %}
+        <fieldset>
+          <legend>Contact us</legend>
+          <input required type="text" placeholder="Message title" />
+          <textarea required name="">Start typing </textarea>
+          <input type="submit" value="Mesage" />
+        </fieldset>
+      </form>
+    </div>
+  </body>
+</html>
+{% endblock%}

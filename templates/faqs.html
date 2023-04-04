@@ -1,0 +1,36 @@
+{% extends 'base.html' %} {% load static %} {% block content%}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'css/faqs.css' %}" />
+  </head>
+  <body>
+    {% include 'homeNavbar.html' %}
+    <div class="faqs">
+      <p class="somefaqs">Some frequently asked questions by our user?</p>
+
+      <div class="the-faqs-con">
+        <div class="qust-ttl-con">
+          <p class="qust-title">Question: How does this plateform work ?</p>
+          <p class="qust-answer">
+            Share medium helps end to end users share secrets and business
+            ideads online. All that you have to is to login, go to your
+            dashboard, check the type of update your looking for or just search
+            for it using our search button above.
+          </p>
+        </div>
+        <div class="qust-ttl-con">
+            <p class="qust-title">Question: Do i pay for using this platform ?</p>
+            <p class="qust-answer">
+                Share medium is a free tool for sharing contents with users.
+                Athough you might be asked to pay some certain amount of money if you're trying to access a premium version of this app.
+            </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+{% endblock%}

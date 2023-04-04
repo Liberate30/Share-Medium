@@ -1,0 +1,63 @@
+{% extends "base.html" %} {% load static %} {% block content %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href='{% static "css/home.css" %}' />
+  </head>
+  <body>
+    <div class="home">
+      {% include 'homeNavbar.html' %}
+      <div class="dashtop">
+        <p class="table-title">Ranking based on statistics</p>
+        <div class="table-div">
+          <table>
+            <thead>
+              <tr>
+                <th>Username</th>
+                <th>Followers</th>
+                <th>Following</th>
+                <th>Type</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for user in users_posts %}
+              <tr>
+                <td class="user-username"><a href="/profile/{{user.user}}">
+                    {{user.user}}
+                </a></td>
+                <td>1</td>
+                <td>0</td>
+                <td>Cons</td>
+                <td>
+                  <form action="/follow" method="POST">
+                    {% csrf_token %}
+                    <input
+                      type="hidden"
+                      name="follower"
+                      value="{{user.username}}"
+                    />
+                    <input class="follow-btn" type="submit" value="Follow" />
+                  </form>
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <!-- <div class='home-nav'>
+            <ul>
+                <li>DashBoard</li>
+                <li>Profile</li>
+                <li>Account settings</li>
+            </ul>
+        </div> -->
+    </div>
+  </body>
+</html>
+{% endblock %}

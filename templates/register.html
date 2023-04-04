@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/register.css'%}">
+</head>
+<body>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <input required type="text" placeholder="Username" name="username">
+        <input required type="email" placeholder="Example@gmail.com" name="email" value="Example@gmail.com">
+        <input required type="password" placeholder="Choose password" name="password1" id="">
+        <input required type="password" placeholder="Retype password" name="password2" id="" value="adminn">
+        <input type="submit" value="Register">
+    </form>
+    <p class="login">Already have an account? <a href="login">Login</a></p>
+</body>
+</html>
+{% endblock %}

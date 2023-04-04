@@ -1,0 +1,66 @@
+.support {
+  padding: 20px;
+  width: 100%;
+}
+
+.support form {
+  width: 100%;
+  max-width: 400px;
+  margin: 30px auto 0;
+}
+
+.support fieldset {
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+  border-radius: 10px;
+  gap: 20px;
+  border: 6px double blue;
+  width: 100%;
+}
+
+.support fieldset legend {
+    color: blueviolet;
+    background-color: white;
+    padding: 10px;
+    border-radius: 4px;
+    font-weight: bold;
+
+}
+
+.support form input {
+    padding: 4px;
+    width: 100%;
+}
+
+.support textarea {
+    padding: 4px;
+    resize: vertical;
+    height: 200px;
+    width: 100%;
+}
+
+.support input[type='submit'] {
+    background-color: blueviolet;
+    color: gold;
+    font-weight: bold;
+    width: fit-content;
+    border-radius: 4px;
+    border: none;
+    padding: 10px 40px;
+    margin-left: 20px;
+}
+
+@media screen and (min-width: 240px) {
+    .support fieldset {
+        padding: 20px;
+    }
+
+    .support form input {
+        padding: 10px;
+    }
+
+    .support textarea {
+        padding: 10px;
+    }
+}

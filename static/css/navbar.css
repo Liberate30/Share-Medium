@@ -1,0 +1,27 @@
+nav {
+    background-color: black;
+}
+
+nav ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+/* nav ul li {
+    border: 1px solid white;
+} */
+
+.logn-reg-con {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}

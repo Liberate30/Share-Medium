@@ -1,0 +1,80 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+    <link rel="stylesheet" href="{% static 'css/profile.css' %}" />
+  </head>
+  <body>
+    {% include 'homeNavbar.html' %}
+    <div class="profile" id="top">
+      <a href="#" class="move-up">
+        <span>To top</span>
+        {{info.username}}
+      </a>
+      {% for info in req_Profile %}
+      <header>
+        <div>
+          <p class="username">{{info.username}}</p>
+          {% if no_of_followers > 1 %}
+          <p class="followers">{{no_of_followers}} followers</p>
+          {%else%}
+          <p class="followers">{{no_of_followers}} follower</p>
+          {%endif%}
+          <p class="following">Following {{no_of_followed}}</p>
+          <form action="/follow" method="POST" onsubmit="noFresh()">
+            {% csrf_token %}
+            <input type="hidden" name="followed" value="{{info.username}}" />
+            <input type="hidden" name="follower" value="{{user.username}}" />
+            {% if following %}
+            <input class="follow-btn" type="submit" value="Unfollow" />
+            {% else %}
+            <input class="follow-btn" type="submit" value="Follow" />
+            {% endif %}
+          </form>
+        </div>
+      </header>
+      {% endfor %}
+      <hr />
+      <div class="posts">
+        {% for post in userPosts reversed %}
+        <div class="post">
+          <p class="post-title"><strong>{{post.title}}</strong></p>
+          <p class="post-desc">{{post.description}}</p>
+          <form action="/likepost" method="POST">
+            {% csrf_token %}
+            <input type="hidden" name="liker" value="{{user.username}}" />
+            <input type="hidden" name="postId" value="{{post.id}}" />
+            <input type="hidden" name="owner" value="{{post.user}}" />
+            <input type="submit" value="Like " id="likeBtn" class="likepostbtn" />
+            <!-- {% for liker in all_likes %}
+            {% if liker.postId == post.id %}
+            <input type="submit" value="Liked" id="likeBtn" class="likepostbtn" />
+            {% else %}
+            {% endif %}
+            {% endfor %} -->
+            <!-- <a id="likeBtn" href="/likepost?postId{{post.id}}" class="likepostbtn">Like</a> -->
+          </form>
+          {% if post.no_of_likes == 1 %}
+          <p class="noOflikes">Liked by {{post.no_of_likes}} person</p>
+          {%elif post.no_of_likes > 1 %}
+          <p class="noOflikes">Liked by {{post.no_of_likes}} people</p>
+          {%else%}
+          <p class="noOflikes">No Likes</p>
+          {%endif%}
+        </div>
+        {%endfor%}
+      </div>
+    </div>
+    <script>
+      function noFresh(event) {
+        event.preventDefault();
+        alert("Form default prevented");
+      }
+    </script>
+  </body>
+</html>
+{% endblock %}

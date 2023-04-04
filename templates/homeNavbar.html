@@ -1,0 +1,83 @@
+{% load static %} {% block content %}
+<head>
+  <link rel="stylesheet" href="{%static 'css/homeNavbar.css'%}" />
+</head>
+<body>
+  <div class="forms-con">
+    <form action="" class="update-find-form">
+      <input
+        class="search-input"
+        placeholder="Search for a format"
+        type="search"
+        name=""
+        id=""
+      />
+      <input class="search-btn" type="submit" value="Find Update" />
+    </form>
+    {% if user.is_authenticated %}
+    <div class="upload-form-div">
+      <p class="post-upload-btn">Post Update</p>
+      <form action="/upload" method="POST" class="post-update-form" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="text" name="title" placeholder="Title">
+        <textarea name="description"></textarea>
+        <input type="file" disabled name="file" accept="">
+        <input type="submit" value="Post">
+      </form>
+    </div>
+    {% endif %}
+  </div>
+  <!-- Nav menu for mobile alone -->
+  <!-- <div class="dash-links">
+              <ul>
+                  <li><a href="">About</a></li>
+                  <li><a href="">Faqs</a></li>
+                  <li><a href="">Support</a></li>
+                  <li><a href="">Setting</a></li>
+              </ul>
+          </div> -->
+  <div class="dash-links">
+    <ul>
+      {% if request.path == '/about' %}
+      <a class="links active-page" href="about"><li>About</li></a>
+      {% else %}
+      <a class="links" href="about"><li>About</li></a>
+      {% endif%}
+
+      {% if request.path == '/faqs' %}
+      <a class="links active-page" href="faqs"><li>Faqs</li></a>
+      {% else %}
+      <a class="links" href="faqs"><li>Faqs</li></a>
+      {% endif%}
+      
+      {% if request.path == '/support' %}
+      <a class="links active-page" href="support"><li>Support</li></a>
+      {% else %}
+      <a class="links" href="support"><li>Support</li></a>
+      {% endif%}
+
+      {% if request.path == '/settings' %}
+      <a class="links active-page" href="settings"><li>Setting</li></a>
+      {% else %}
+      <a class="links" href="settings"><li>Setting</li></a>
+      {% endif%}
+    </ul>
+  </div>
+  <script>
+    let links = document.querySelectorAll('.links')
+  
+    links.forEach( link => {
+      link.addEventListener('click', function(e) {
+        
+        links.forEach(alllink => {
+          alllink.style.backgroundColor = 'transparent'
+        })
+        window.addEventListener('load', (e)=> {
+          e.preventDefault()
+          link.style.backgroundColor = 'blue'
+        })
+      })
+    })
+  </script>
+</body>
+{% endblock %}
